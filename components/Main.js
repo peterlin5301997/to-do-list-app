@@ -22,6 +22,11 @@ export default class Main extends React.Component {
     }
   }
 
+  deleteNote = (key) => {
+    this.state.noteArray.splice(key, 1);
+    this.setState({ noteArray: this.state.noteArray })
+  }
+
   render() {
 
     let notes = this.state.noteArray.map((val, key) => {
