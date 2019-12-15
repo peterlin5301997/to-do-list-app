@@ -1,29 +1,31 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>- Noter -</Text>
-      </View>
-      <ScrollView style={styles.scrollContainer}>
+export default class Main extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>- Noter -</Text>
+        </View>
+        <ScrollView style={styles.scrollContainer}>
 
-      </ScrollView>
-      <View style={styles.footer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder=">note"
-          placeholderTextColor="white"
-          underlineColorAndroid="transparent">
+        </ScrollView>
+        <View style={styles.footer}>
+          <TextInput
+            style={styles.textInput}
+            placeholder=">note"
+            placeholderTextColor="white"
+            underlineColorAndroid="transparent">
 
-        </TextInput>
+          </TextInput>
+        </View>
+        <TouchableOpacity style={styles.addButton}>
+          <Text style={styles.addButtonText}>+</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.addButton}>
-        <Text style={styles.addButtonText}>+</Text>
-      </TouchableOpacity>
-    </View>
-  );
+    );  
+  }
 }
 
 const styles = StyleSheet.create({
