@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default class Note extends React.Component {
   render() {
+    console.log(this.props)
+
     return (
       <View key={this.props.keyval} style={styles.note}>
         <Text style={styles.noteText}>{this.props.val.date}</Text>
         <Text style={styles.noteText}>{this.props.val.note}</Text>
         <TouchableOpacity onPress={this.props.delete} style={styles.deleteButton}>
-          <Text style={styles.deleteButtonText}>Delete</Text>
+          <Text style={styles.deleteButtonText}>x</Text>
         </TouchableOpacity>
       </View>
     );

@@ -1,30 +1,55 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 
+import Note from './Note';
+
 export default class Main extends React.Component {
+
+  state = {
+    noteArray: [],
+    noteText: '',
+  }
+
+  addNote = () => {
+    if (this.state.noteText) {
+      var date = new Date();
+      this.state.noteArray.push({
+        'date': date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate(),
+        'note': this.state.noteText
+      })
+      this.setState({ noteArray: this.state.noteArray })
+      this.setState({ noteText: '' })
+    }
+  }
+
   render() {
+
+    let notes = this.state.noteArray.map((val, key) => {
+      return <Note key={key} keyval={key} val={val} delete={() => this.deleteNote(key)} />
+    })
+
     return (
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.headerText}>- Noter -</Text>
         </View>
         <ScrollView style={styles.scrollContainer}>
-
+          {notes}
         </ScrollView>
         <View style={styles.footer}>
           <TextInput
             style={styles.textInput}
             placeholder=">note"
             placeholderTextColor="white"
-            underlineColorAndroid="transparent">
-
+            underlineColorAndroid="transparent"
+            onChangeText={ (text) => this.setState({ noteText: text }) } >
           </TextInput>
         </View>
-        <TouchableOpacity style={styles.addButton}>
+        <TouchableOpacity style={styles.addButton} onPress={ this.addNote }>
           <Text style={styles.addButtonText}>+</Text>
         </TouchableOpacity>
       </View>
-    );  
+    );
   }
 }
 
