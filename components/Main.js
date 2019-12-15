@@ -19,6 +19,9 @@ export default function App() {
 
         </TextInput>
       </View>
+      <TouchableOpacity style={styles.addButton}>
+        <Text style={styles.addButtonText}>+</Text>
+      </TouchableOpacity>
     </View>
   );
 }
